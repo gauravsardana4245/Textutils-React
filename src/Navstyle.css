@@ -1,0 +1,56 @@
+.navbar{
+    border-bottom: 2px solid white;
+}
+.themeicons{
+    display: flex;
+}
+.themeicons li{
+    padding: 0 13px;
+}
+#inlineRadio1 {
+    background-color: red;
+}
+.form-check-inline img {
+    cursor: pointer;
+}
+.btn{
+    margin: 0 9px;
+    /* border-radius: 50%; */
+
+   
+}
+.btn-group span{
+    
+    margin: 0px 10px;
+    position: relative;
+    top: 1px;
+
+
+}
+#rTheme{
+    background-color: #4d1a00;
+    height: 30px;
+  width: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+#rTheme:checked{
+    border: 2px solid blue;
+    background-color: yellow;
+}
+#bTheme{
+    background-color: #000066;
+    height: 30px;
+  width: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+#gTheme{
+    background-color: #003300;
+    height: 30px;
+  width: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    /* margin-right: 4px; */
+}
