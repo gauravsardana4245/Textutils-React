@@ -54,3 +54,7 @@
     border: 2px solid white;
     /* margin-right: 4px; */
 }
+.nav-Link{
+    text-decoration: none;
+    padding: 0px 6px;
+}

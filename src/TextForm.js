@@ -24,6 +24,17 @@ export default function TextForm(props) {
         console.log("OnChange");
         setText(event.target.value);
     }
+    const handleCopy = () => {
+      // var text = document.getElementById("myBox");
+      // text.select();
+      // document.getSelection().removeAllRanges();
+
+      navigator.clipboard.writeText(text);
+  }
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "))
+}
     const CapitalFirst= ()=>{
       let txt = text.split(".");
       // console.log(txt)
@@ -51,20 +62,22 @@ export default function TextForm(props) {
 <div className="mb-3">
   {/* {console.log(props.mode)}
   {console.log("a")} */}
-  <textarea className="form-control"  value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
+  <textarea className="form-control exampleFormControlTextarea1"  value={text} onChange={handleOnChange} id="myBox" rows="8" style= {{ color: props.mode === "dark"?"white":"black", backgroundColor: props.mode === "light"?"white":"black" }}></textarea>
 </div>
-<button className="btn btn-primary mx-1" onClick={handleUpclick}> Change to Uppercase</button>
-<button className="btn btn-primary mx-1" onClick={handleLoclick}> Change to Lowercase</button>
-<button className="btn btn-primary mx-1" onClick={handleClearClick}> Clear Text</button>
-<button className="btn btn-primary mx-1" onClick={CapitalFirst}>Capitalize First</button>
+<button className="btn btn-primary mx-1 my-1" onClick={handleUpclick} disabled={text.length===0}> Change to Uppercase</button>
+<button className="btn btn-primary mx-1 my-1" onClick={handleLoclick} disabled={text.length===0}> Change to Lowercase</button>
+<button className="btn btn-primary mx-1 my-1" onClick={handleClearClick} disabled={text.length===0}> Clear Text</button>
+<button className="btn btn-primary mx-1 my-1" onClick={CapitalFirst} disabled={text.length===0}>Capitalize First</button>
+<button className="btn btn-primary mx-1"  onClick={handleCopy} disabled={text.length===0}>Copy Text</button>
+<button className="btn btn-primary mx-1" onClick={handleExtraSpaces} disabled={text.length===0} >Remove extra spaces</button>
     </div>
     </div>
     <div className="container">
         <h3>Your text summary</h3>
-        <p> {text.length>0?text.trim().split(" ").length:0} Words and {text.length} Characters</p>
-        <p>{0.008*text.split(" ").length} minutes read </p>
+        <p> {text.length>0?text.split(/\s+/).filter((element)=> { return element.length!==0}).length:0} Words and {text.length} Characters</p>
+        <p>{0.008*text.split(" ").filter((element)=> { return element.length!==0}).length} minutes read </p>
         <h2>Preview</h2>
-        <p>{text.length>0?text:"Enter something in the textbox above to preview it here"}</p>
+        <p>{text.length>0?text:"Nothing to preview"}</p>
     
     </div>
     </>
